@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
     templateUrl: 'layout-page.component.html'
 })
 
-export class NameComponent implements OnInit {
+export class LayoutPageComponent implements OnInit {
     constructor() { }
 
     ngOnInit() { }
