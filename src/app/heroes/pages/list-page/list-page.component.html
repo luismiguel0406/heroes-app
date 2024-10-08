@@ -1,1 +1,10 @@
-<p>list works</p>
+<h1>List of heroes</h1>
+
+<div class="grid p-2">
+  @for (hero of heroes; track $index) {
+  <div class="col-12 sm:col-4 md:col-2">
+    <hero-card [hero]="hero"></hero-card>
+  </div>
+
+  }
+</div>
