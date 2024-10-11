@@ -1,1 +1,21 @@
-<p>search works!</p>
+<div class="flex flex-column p-2">
+
+<mat-form-field>
+    <mat-label>
+        Buscar Heroe
+    </mat-label>
+    <input type="text"
+      placeholder="Busca un heroe"
+      matInput
+      (input)="searchHero()"
+      [formControl]="inputAutocompleteHero"
+      [matAutocomplete]="autoCompleteHero"
+    >
+    <mat-autocomplete #autoCompleteHero="matAutocomplete">
+        <mat-option>
+            opcion
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+</div>

@@ -16,13 +16,10 @@ const routes: Routes = [
     component:Error404Component
   },
   {
-    path:'**',
-    redirectTo:'404'
-  },
-  {
     path:'',
     redirectTo:'heroes',
-    pathMatch:'full'
+    pathMatch:"full"
+    
   },
   {
     path:"**",
