@@ -1,1 +1,80 @@
-<p>new works</p>
+<div class="grid">
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <mat-card-content>
+        <form class="grid" [formGroup]="heroFormGroup">
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Superhero</mat-label>
+            <input
+              matInput
+              placeholder="superhero"
+              formControlName="superhero"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Alter ego</mat-label>
+            <input
+              matInput
+              placeholder="alter ego"
+              formControlName="alterEgo"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>First appearance</mat-label>
+            <input
+              matInput
+              placeholder="first appearance"
+              formControlName="firstAppearance"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="col-12 sm:col-6">
+            <mat-label>Publisher</mat-label>
+            <mat-select
+              placeholder="select a publisher"
+              formControlName="publisher"
+            >
+              @for (publisher of publishers; track $index) {
+              <mat-option [value]="publisher.id">{{
+                publisher.desc
+              }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Characters</mat-label>
+            <textarea
+              matInput
+              placeholder="characters separated by comma"
+              formControlName="characters"
+            ></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="col-12">
+            <mat-label>Image url</mat-label>
+            <input
+              matInput
+              placeholder="Image url"
+              formControlName="imageUrl"
+            />
+          </mat-form-field>
+        </form>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="m-2" mat-flat-button color="tertiary">Remove</button>
+        <button class="m-2" mat-flat-button color="primary">Save</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div class="col-12 sm:col-6">
+    <mat-card>
+      <img
+        mat-card-image
+        [src]="'https://aulanews.uao.es/wp-content/uploads/2023/02/Marvel.jpeg'"
+      />
+    </mat-card>
+  </div>
+</div>

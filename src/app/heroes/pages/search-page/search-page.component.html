@@ -12,9 +12,13 @@
       [matAutocomplete]="autoCompleteHero"
     >
     <mat-autocomplete #autoCompleteHero="matAutocomplete">
-        <mat-option>
-            opcion
+       @for (suggest of heroSuggestions; track $index) {
+        <mat-option
+         [routerLink]="['/heroes', suggest.id]"
+        >
+           {{suggest.superhero}}
         </mat-option>
+       }   
     </mat-autocomplete>
 </mat-form-field>
 

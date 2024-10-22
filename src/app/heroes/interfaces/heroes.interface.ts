@@ -5,6 +5,8 @@ export interface Heroes {
     alterEgo:        string;
     firstAppearance: string;
     characters:      string;
+    imageUrl:        string;
+    isActive:        boolean;
 }
 
 export enum Publisher {

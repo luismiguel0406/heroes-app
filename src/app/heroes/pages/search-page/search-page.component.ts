@@ -1,6 +1,7 @@
 import {  Component, OnInit } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { FormControl } from '@angular/forms';
+import { Heroes } from '../../interfaces/heroes.interface';
 
 @Component({
     selector: 'app-search-page',
@@ -8,7 +9,8 @@ import { FormControl } from '@angular/forms';
 })
 export class SearchPageComponent implements OnInit {
     
-    public inputAutocompleteHero = new FormControl('')
+    public inputAutocompleteHero = new FormControl('');
+    public heroSuggestions: Heroes[] | undefined = [];
    
     constructor(private _heroService:HeroesService) {
         
@@ -19,6 +21,9 @@ export class SearchPageComponent implements OnInit {
     }
 
     searchHero(){
-       console.log(this.inputAutocompleteHero.value)
+      this._heroService.getSuggestion(this.inputAutocompleteHero.value || "")
+      .subscribe(
+         suggestions => this.heroSuggestions = suggestions
+      );
     }
 }

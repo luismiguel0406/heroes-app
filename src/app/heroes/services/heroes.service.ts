@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 import { catchError, Observable, of } from 'rxjs';
@@ -20,5 +20,10 @@ export class HeroesService {
     return this._http
       .get<Heroes>(`${this.URLBase}/api/heroes/${id}`)
       .pipe(catchError((_) => of(undefined)));
+  }
+
+  getSuggestion(suggestion:string):Observable<Heroes[]| undefined>{
+    return this._http.get<Heroes[]>(`${this.URLBase}/api/heroes/suggest`,{params:{suggestion}})
+    .pipe(catchError((_)=> of(undefined)));
   }
 }
