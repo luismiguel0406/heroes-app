@@ -9,8 +9,9 @@ import { ListPageComponent } from './pages/list-page/list-page.component';
 import { NewPageComponent } from './pages/new-page/new-page.component';
 import { SearchPageComponent } from './pages/search-page/search-page.component';
 import { LayoutPageComponent } from './pages/layout-page/layout-page-heroes.component';
-import { HeroCardComponent } from './components/hero-card.component';
+import { HeroCardComponent } from './components/card/hero-card.component';
 import { HeroImagePipe } from './pipes/heroImage.pipe';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   imports: [HeroesRoutingModule, CommonModule, MaterialModule, ReactiveFormsModule],
@@ -21,6 +22,7 @@ import { HeroImagePipe } from './pipes/heroImage.pipe';
     SearchPageComponent,
     LayoutPageComponent,
     HeroCardComponent,
+    ConfirmDialogComponent,
     //Pipes
     HeroImagePipe
   ],

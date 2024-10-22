@@ -1,7 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
-import { catchError, Observable, of } from 'rxjs';
+import { asyncScheduler, catchError, Observable, scheduled } from 'rxjs';
 import { Heroes } from '../interfaces/heroes.interface';
 
 @Injectable({
@@ -19,11 +19,23 @@ export class HeroesService {
   getHeroById(id: string): Observable<Heroes | undefined> {
     return this._http
       .get<Heroes>(`${this.URLBase}/api/heroes/${id}`)
-      .pipe(catchError((_) => of(undefined)));
+      .pipe(catchError((_) => scheduled([undefined], asyncScheduler)));
   }
 
   getSuggestion(suggestion:string):Observable<Heroes[]| undefined>{
     return this._http.get<Heroes[]>(`${this.URLBase}/api/heroes/suggest`,{params:{suggestion}})
-    .pipe(catchError((_)=> of(undefined)));
+    .pipe(catchError((_)=> scheduled([undefined], asyncScheduler)));
+  }
+
+  addHero(hero:Heroes):Observable<Heroes>{
+   return this._http.post<Heroes>(`${this.URLBase}/heroes`, hero);
+  }
+
+ updateHero(hero:Partial<Heroes>):Observable<unknown>{
+   return this._http.patch(`${this.URLBase}/heroes`, hero);
+ }
+
+  deleteHero(id:string):Observable<unknown>{
+     return this._http.delete(`${this.URLBase}/heroes/${id}`);
   }
 }
