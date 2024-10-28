@@ -28,14 +28,14 @@ export class HeroesService {
   }
 
   addHero(hero:Heroes):Observable<Heroes>{
-   return this._http.post<Heroes>(`${this.URLBase}/heroes`, hero);
+   return this._http.post<Heroes>(`${this.URLBase}/api/heroes`, hero);
   }
 
- updateHero(hero:Partial<Heroes>):Observable<unknown>{
-   return this._http.patch(`${this.URLBase}/heroes`, hero);
+ updateHero(id:string, hero:Partial<Heroes>):Observable<unknown>{
+   return this._http.put(`${this.URLBase}/api/heroes/${id}`, hero);
  }
 
   deleteHero(id:string):Observable<unknown>{
-     return this._http.delete(`${this.URLBase}/heroes/${id}`);
+     return this._http.delete(`${this.URLBase}/api/heroes/${id}`);
   }
 }

@@ -8,7 +8,7 @@
 
 
     <div *ngIf="hero; else loader" class="grid p-2" >
-        <mat-card class="col-12 md:col-6" [ngStyle]="{height: 300}">
+        <mat-card class="col-12 md:col-6" [ngStyle]="{height: 200}">
           <mat-card-header>
             <mat-card-title>
               {{ hero.alterEgo }}
@@ -22,20 +22,24 @@
       
         <mat-card class="col-12 md:col-6" [ngStyle]="{height: 300}">
           <mat-card-header>
-            <mat-card-title>Información</mat-card-title>
+            <mat-card-title>Info</mat-card-title>
             <mat-card-subtitle>{{ hero.superhero }}</mat-card-subtitle>
           </mat-card-header>
       
           <mat-card-content>
             <mat-list>
-              <mat-list-item>{{ hero.firstAppearance }}</mat-list-item>
-              <mat-list-item>{{ hero.characters }}</mat-list-item>
-              <mat-list-item>{{ hero.publisher }}</mat-list-item>
-              <mat-list-item>{{ hero.alterEgo }}</mat-list-item>
-            </mat-list>
-      
-            <button mat-button color="warn" (click)="goBack()">Regresar</button>
+              <mat-list-item><span class="font-medium">First appearance:</span> {{ hero.firstAppearance }}</mat-list-item>
+              <mat-list-item><span class="font-medium">Characters:</span> {{ hero.characters }}</mat-list-item>
+              <mat-list-item><span class="font-medium">Publisher:</span> {{ hero.publisher }}</mat-list-item>
+              <mat-list-item><span class="font-medium">Alter ego:</span> {{ hero.alterEgo }}</mat-list-item>
+            </mat-list>         
           </mat-card-content>
+        
+            <mat-card-actions>
+              <button mat-flat-button color="warn" class="m-2" (click)="goBack()">Back</button>
+              <button mat-flat-button color="primary" class="m-2" (click)="goToEdit()">Edit</button>
+            </mat-card-actions>
+       
         </mat-card>
       </div>
 

@@ -9,8 +9,7 @@ import { Router } from '@angular/router';
 
 export class HeroCardComponent implements OnInit {
 
-    @Input()
-    public hero!:Heroes
+    @Input() public hero!:Heroes
     constructor(private _router:Router) { }
 
     ngOnInit() {

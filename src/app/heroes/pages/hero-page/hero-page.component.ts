@@ -31,4 +31,8 @@ export class HeroPageComponent implements OnInit {
   goBack(): void {
     this._router.navigateByUrl('heroes/list');
   }
+
+  goToEdit():void{
+   this._router.navigateByUrl(`heroes/edit/${this.hero.id}`)
+  }
 }

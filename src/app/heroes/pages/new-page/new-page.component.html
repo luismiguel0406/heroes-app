@@ -1,6 +1,9 @@
 <div class="grid">
   <div class="col-12 sm:col-6">
     <mat-card>
+      <mat-card-header class="mb-3">
+        <mat-card-title>{{ titleForm }} </mat-card-title>
+      </mat-card-header>
       <mat-card-content>
         <form class="grid" [formGroup]="heroFormGroup">
           <mat-form-field class="col-12 sm:col-6">
@@ -64,16 +67,17 @@
         </form>
       </mat-card-content>
       <mat-card-actions>
-        <button class="m-2" mat-flat-button color="tertiary" (click)="deleteHero()">Remove</button>
-        <button class="m-2" mat-flat-button color="primary">Save</button>
+        <button class="m-2" mat-flat-button color="warn" (click)="deleteHero()">Remove</button>
+        <button class="m-2" mat-flat-button color="primary" (click)="updateHero()">Save</button>
       </mat-card-actions>
     </mat-card>
   </div>
   <div class="col-12 sm:col-6">
     <mat-card>
       <img
+        [style]="{'max-height.px':500}"
         mat-card-image
-        [src]="'https://aulanews.uao.es/wp-content/uploads/2023/02/Marvel.jpeg'"
+        [src]="currentHero | heroImage"
       />
     </mat-card>
   </div>

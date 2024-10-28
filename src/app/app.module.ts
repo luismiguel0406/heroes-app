@@ -6,7 +6,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppComponent } from './app.component';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {  provideHttpClient, withInterceptorsFromDi} from "@angular/common/http"
+import {  provideHttpClient, withFetch, withInterceptorsFromDi} from "@angular/common/http"
 
 
 @NgModule({
@@ -19,7 +19,7 @@ import {  provideHttpClient, withInterceptorsFromDi} from "@angular/common/http"
     SharedModule,
 
   ],
-  providers: [provideHttpClient(withInterceptorsFromDi()), provideAnimationsAsync()],
+  providers: [provideHttpClient(withFetch()), provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

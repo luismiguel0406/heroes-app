@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class LayoutPageComponent implements OnInit {
+    public containerHeight:string = '100%'
     constructor() { }
 
     ngOnInit() { }

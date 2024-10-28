@@ -9,13 +9,13 @@
     </mat-card-header>
     <img mat-card-image [src]="hero | heroImage" [alt]="hero.superhero" />
     <mat-card-content>
-      <mat-chip-listbox>
+      <mat-chip-set>
         @for (character of hero.characters.split(","); track $index) {
         <mat-chip>
           {{ character }}
         </mat-chip>
         }
-      </mat-chip-listbox>
+      </mat-chip-set>
     </mat-card-content>
   </mat-card>
 
