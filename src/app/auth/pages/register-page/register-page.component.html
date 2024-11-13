@@ -1,23 +1,29 @@
-<mat-card>
+<mat-card class="flex p-3">
+  <mat-card-header class="mb-2" [style]="{color:'white'}">
     <mat-card-title> Register </mat-card-title>
+  </mat-card-header>
     <mat-card-content>
-      <form class="grid">
-        <mat-form-field>
-          <mat-label>Username</mat-label>
-          <input matInput placeholder="username" />
+      <form class="grid" [formGroup]="registerForm" (ngSubmit)="onRegister()">
+        <mat-form-field class="col-12">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="email" formControlName="email"/>
         </mat-form-field>
-        <mat-form-field>
+        <mat-form-field class="col-12">
+          <mat-label>Username</mat-label>
+          <input matInput placeholder="username" formControlName="username" />
+        </mat-form-field>
+        <mat-form-field class="col-12">
           <mat-label>Password</mat-label>
-          <input matInput placeholder="password" type="password" />
+          <input matInput placeholder="password" type="password" formControlName="password" />
         </mat-form-field>
       </form>
     </mat-card-content>
     <mat-card-footer>
-      <div class="col-12">
-          <button mat-flat-button color="primary">Submit</button>
+      <div class="col-12 p-3">
+          <button mat-flat-button color="primary" type="submit">Submit</button>
       </div>
       <div class="flex justify-content-end mt-3">
-          <a routerLink="auth/login">I already have registered</a>
+          <a routerLink="/auth/login" [style]="{color:'white'}">I have an account</a>
       </div>
     </mat-card-footer>
   </mat-card>
