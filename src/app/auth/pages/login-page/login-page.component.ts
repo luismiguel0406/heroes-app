@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../heroes/services/auth.service';
 import { User } from '../../interfaces/user.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HttpResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
@@ -26,21 +27,22 @@ export class LoginPageComponent {
     return true;
   }
 
-  onSaveToken(response:any){
-    console.log(response)
+  onSaveToken(response:HttpResponse<any>){
+    const body = response.body;
+    const token = body.token;
+    sessionStorage.setItem("Bearer-token", token);
   }
 
-  onLogin(): void {
+     onLogin() {
     if (!this.onValidate()) return;
-    this._authService
+      this._authService
       .onLogin(this.authForm.value as User)
-      .subscribe((response) => {
-        if (!response) {
-            console.log(response);
+      .subscribe((response:HttpResponse<unknown> | boolean) => {
+        if (typeof response === 'boolean') {
             this._snackBar.open("Bad credentials","Ok");
             return;
         } 
-        this.onSaveToken(response)    
+        this.onSaveToken(response);     
         this._router.navigateByUrl('heroes');
       });
   }

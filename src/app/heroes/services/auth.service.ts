@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../../auth/interfaces/user.interface';
 import { asyncScheduler, catchError, Observable, scheduled } from 'rxjs';
@@ -10,13 +10,13 @@ export class AuthService {
 
   constructor(private _http: HttpClient) {}
 
-  onLogin(user: Partial<User>): Observable<any> {
-    return this._http.post(`${this.URLBase}/api/users/login`, user)
+  onLogin(user: Partial<User>): Observable<HttpResponse<unknown> | boolean> {
+    return this._http.post<HttpResponse<unknown>>(`${this.URLBase}/api/users/login`, user, { observe:'response' })
     .pipe(catchError(_=> scheduled([false], asyncScheduler)))
     ;
   }
 
-  onRegister(user: Partial<User>): Observable<any> {
+  onRegister(user: Partial<User>): Observable<unknown | boolean> {
     return this._http.post(`${this.URLBase}/api/users/register`, user)
     .pipe(catchError( _ => scheduled([false], asyncScheduler)));
   }
